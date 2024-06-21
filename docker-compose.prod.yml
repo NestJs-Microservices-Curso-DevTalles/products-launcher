@@ -12,7 +12,7 @@ services:
     build: 
       context: ./client-gateway
       dockerfile: dockerfile.prod
-    image: client-gateway-prod
+    image: northamerica-northeast1-docker.pkg.dev/microservicio-auth/images-microservices/client-gateway-prod
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -27,7 +27,7 @@ services:
     build: 
       context: ./auth-ms
       dockerfile: dockerfile.prod
-    image: auth-ms-prod
+    image: northamerica-northeast1-docker.pkg.dev/microservicio-auth/images-microservices/auth-ms-prod
     environment:
       - PORT=3000
       - NATS_SERVERS=nats://nats-server:4222
@@ -38,15 +38,15 @@ services:
 # Products microservices
 #===================================
 
-  products-ms:
-    build: 
-      context: ./products-ms
-      dockerfile: dockerfile.prod
-    image: products-ms-prod
-    environment:
-      - PORT=3001
-      - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=file:./dev.db
+  # products-ms:
+  #   build: 
+  #     context: ./products-ms
+  #     dockerfile: dockerfile.prod
+  #   image: products-ms-prod
+  #   environment:
+  #     - PORT=3001
+  #     - NATS_SERVERS=nats://nats-server:4222
+  #     - DATABASE_URL=file:./dev.db
 
 
 #===================================
