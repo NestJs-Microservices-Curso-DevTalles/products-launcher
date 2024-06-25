@@ -1,0 +1,31 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: client-gateway
+  name: client-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-gateway
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: client-gateway
+    spec:
+      containers:
+      - name: client-gateway-prod
+        image: northamerica-northeast1-docker.pkg.dev/microservicio-auth/images-microservices/client-gateway-prod
+        env:
+        - name: PORT
+          value: "3000"
+        - name: NATS_SERVERS
+          value: "nats://nats"
+        resources: {}
+      imagePullSecrets:
+      - name: grc-json-key
+status: {}
