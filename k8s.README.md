@@ -89,3 +89,5 @@ or kubectl logs NAME
 $Configurar secretos
 reiniciar k8s
 kubectl rollout restart deployment
+Acceso a los Endpoints de monitoreo
+kubectl port-forward svc/nats 8222:8222

@@ -20,5 +20,10 @@ spec:
       containers:
       - image: nats
         name: nats
+        ports:
+          - containerPort: 4222
+          - containerPort: 8222
+        args: ["-m", "8222"] # Habilitar el puerto de monitoreo
+        
         resources: {}
 status: {}
